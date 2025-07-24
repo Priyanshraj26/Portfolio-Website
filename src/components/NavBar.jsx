@@ -12,7 +12,7 @@ const navItems = [
 ];
 
 
-export const Navbar = () => {
+export const NavBar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 

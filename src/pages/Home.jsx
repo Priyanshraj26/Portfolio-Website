@@ -1,4 +1,4 @@
-import { Navbar} from "@/components/Navbar";
+import { NavBar} from "@/components/NavBar";
 import {HeroSection} from "@/components/HeroSection";
 import {AboutSection} from "@/components/AboutSection";
 import {SkillsSection} from "@/components/SkillsSection";
@@ -21,7 +21,7 @@ export const Home = () => {
         {/* Foreground Content */}
         <div className="relative z-10">
             
-            <Navbar />
+            <NavBar />
             <main>
                 <HeroSection />
                 <AboutSection />
