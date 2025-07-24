@@ -1,0 +1,37 @@
+/* customHeatmap.css: Use purple hue (250 65% X%) */
+.heatmap-empty {
+  fill: hsl(250, 20%, 20%);
+}
+
+.heatmap-scale-1 {
+  fill: hsl(250, 65%, 85%);
+}
+
+.heatmap-scale-2 {
+  fill: hsl(250, 65%, 75%);
+}
+
+.heatmap-scale-3 {
+  fill: hsl(250, 65%, 65%);
+}
+
+.heatmap-scale-4 {
+  fill: hsl(250, 65%, 55%);
+}
+
+/* Improve visibility for text */
+.react-calendar-heatmap text {
+  fill: hsl(213, 31%, 91%) !important;
+    width: 5px;
+  height: 5px;
+  stroke: none;
+  font-size: xx-small;
+  font-weight: 500;
+}
+.react-calendar-heatmap rect {
+  width: 10px !important;
+  height: 10px !important;
+  rx: 5 !important;
+  ry: 5 !important;
+  stroke: none !important;
+}
