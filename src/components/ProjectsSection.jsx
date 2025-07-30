@@ -8,7 +8,7 @@ const projects = [
     image: "/projects/project1.png",
     tags: ["React", "Flask", "NLP","CV","AI"],
     demoUrl: "#",
-    githubUrl: "#",
+    githubUrl: "https://github.com/Priyanshraj26/IMPACT--Interview-Monitoring",
   },
   {
     id: 2,
