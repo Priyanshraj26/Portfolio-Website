@@ -30,6 +30,9 @@ const Heatmap = () => {
     return "heatmap-scale-4";
   };
 
+  // Get the current year
+  const currentYear = new Date().getFullYear();
+
   return (
     <div id="leetcode" className="py-24 px-4 relative">
         <h2 className="text-3xl md:text-4xl font-bold mb-12 text-center text-primary">
@@ -38,8 +41,8 @@ const Heatmap = () => {
     <div className="container mx-auto max-w-3xl grid grid-cols-1 md:grid-cols-2 gap-6">
       <div className="">
         <HeatMap
-          startDate={new Date("2025-06-01")}  // or dynamically use 60 days ago
-          endDate={new Date()}
+          startDate={new Date(`${currentYear}-06-15`)}  // July 1st
+          endDate={new Date(`${currentYear}-09-10`)}    // September 30th
           values={leetcodeData}
           classForValue={classForValue}
           gutterSize={1}

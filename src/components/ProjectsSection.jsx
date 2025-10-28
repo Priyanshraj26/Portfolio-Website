@@ -23,13 +23,13 @@ const projects = [
 
   {
     id: 3,
-    title: "Camping Website",
+    title: "Spotify Scaler",
     description:
-      "Full-featured Camping website with CRUD operations and geospatial functionality",
+      " Python based application to determine features of songs",
     image: "/projects/project3.png",
-    tags: ["Node.js", "Express", "MongoDB", "API"],
+    tags: ["Python", "FFmpeg", "Streamlit", "API"],
     demoUrl: "#",
-    githubUrl: "https://github.com/Priyanshraj26/CampTrek",
+    githubUrl: "https://github.com/Priyanshraj26/SpotifyScaler",
   },
 ];
 
