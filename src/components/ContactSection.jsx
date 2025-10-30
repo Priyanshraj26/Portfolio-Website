@@ -3,14 +3,12 @@ import {
   Linkedin,
   Mail,
   MapPin,
-  Phone,
   Send,
-  Twitch,
-  Twitter,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useToast } from "@/hooks/use-toast";
 import { useState } from "react";
+import emailjs from '@emailjs/browser';
 
 export const ContactSection = () => {
   const { toast } = useToast();
@@ -18,22 +16,68 @@ export const ContactSection = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
     setIsSubmitting(true);
 
-    setTimeout(() => {
+    // Get EmailJS credentials from environment variables
+    // For Vite, use import.meta.env.VITE_*
+    // For CRA, use process.env.REACT_APP_*
+    const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+    const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+    const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+
+    // Validate environment variables
+    if (!serviceId || !templateId || !publicKey) {
+      console.error('EmailJS credentials are missing. Check your .env file.');
       toast({
-        title: "Message sent!",
-        description: "Thank you for your message. I'll get back to you soon.",
+        title: "Configuration Error",
+        description: "Email service is not properly configured. Please contact the site administrator.",
+        variant: "destructive",
       });
       setIsSubmitting(false);
-    }, 1500);
+      return;
+    }
+
+    // Prepare template parameters
+    const templateParams = {
+      from_name: e.target.name.value,
+      user_email: e.target.email.value,
+      message: e.target.message.value,
+      to_email: '26priyanshraj@gmail.com', // Your email
+    };
+
+    // Send email via EmailJS
+    emailjs.send(serviceId, templateId, templateParams, publicKey)
+      .then((response) => {
+        console.log('Email sent successfully!', response.status, response.text);
+        
+        // Show success message
+        toast({
+          title: "Message sent!",
+          description: "Thank you for your message. I'll get back to you soon.",
+        });
+        
+        // Reset form
+        e.target.reset();
+        setIsSubmitting(false);
+      })
+      .catch((error) => {
+        console.error('Failed to send email:', error);
+        
+        // Show error message
+        toast({
+          title: "Error!",
+          description: "Failed to send message. Please try again or email me directly at 26priyanshraj@gmail.com",
+          variant: "destructive",
+        });
+        setIsSubmitting(false);
+      });
   };
+
   return (
     <section id="contact" className="py-24 px-4 relative bg-secondary/30">
       <div className="container mx-auto max-w-5xl">
         <h2 className="text-3xl md:text-4xl font-bold mb-4 text-center">
-          Get In <span className="text-primary"> Touch</span>
+          Get In <span className="text-primary">Touch</span>
         </h2>
 
         <p className="text-center text-muted-foreground mb-12 max-w-2xl mx-auto">
@@ -42,28 +86,27 @@ export const ContactSection = () => {
         </p>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+          {/* Contact Information */}
           <div className="space-y-8">
             <h3 className="text-2xl font-semibold mb-6">
-              {" "}
               Contact Information
             </h3>
 
             <div className="space-y-10">
-            <div className="flex items-center space-x-4">
-              <div className="p-4 rounded-full bg-primary/10 flex-shrink-0">
-                <Mail className="h-6 w-6 text-primary" />
+              <div className="flex items-center space-x-4">
+                <div className="p-4 rounded-full bg-primary/10 flex-shrink-0">
+                  <Mail className="h-6 w-6 text-primary" />
+                </div>
+                <div className="flex flex-col justify-center">
+                  <h4 className="font-medium">Email</h4>
+                  <a
+                    href="mailto:26priyanshraj@gmail.com"
+                    className="text-muted-foreground hover:text-primary transition-colors"
+                  >
+                    26priyanshraj@gmail.com
+                  </a>
+                </div>
               </div>
-              <div className="flex flex-col justify-center">
-                <h4 className="font-medium">‎ ‎ ‎ Email</h4>
-                <a
-                  href="mailto:26priyanshraj@gmail.com"
-                  className="text-muted-foreground hover:text-primary transition-colors"
-                >
-                  26priyanshraj@gmail.com
-                </a>
-              </div>
-            </div>
-
 
               <div className="flex items-center space-x-4">
                 <div className="p-4 rounded-full bg-primary/10 flex-shrink-0">
@@ -71,38 +114,48 @@ export const ContactSection = () => {
                 </div>
                 <div className="flex flex-col justify-center">
                   <h4 className="font-medium">Location</h4>
-                  <span className="text-muted-foreground">Bhopal, Madhya Pradesh, India</span>
+                  <span className="text-muted-foreground">
+                    Bhopal, Madhya Pradesh, India
+                  </span>
                 </div>
               </div>
             </div>
 
             <div className="pt-8">
-              <h4 className="font-medium mb-4"> Connect With Me</h4>
+              <h4 className="font-medium mb-4">Connect With Me</h4>
               <div className="flex space-x-4 justify-center">
-                <a href="https://in.linkedin.com/in/priyanshrajgupta" target="_blank">
-                  <Linkedin />
+                <a 
+                  href="https://in.linkedin.com/in/priyanshrajgupta" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="hover:text-primary transition-colors"
+                  aria-label="LinkedIn Profile"
+                >
+                  <Linkedin className="h-6 w-6" />
                 </a>
-                <a href="https://www.instagram.com/priyanshrajgupta/" target="_blank">
-                  <Instagram />
+                <a 
+                  href="https://www.instagram.com/priyanshrajgupta/" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="hover:text-primary transition-colors"
+                  aria-label="Instagram Profile"
+                >
+                  <Instagram className="h-6 w-6" />
                 </a>
-
               </div>
             </div>
           </div>
 
-          <div
-            className="bg-card p-8 rounded-lg shadow-xs"
-            onSubmit={handleSubmit}
-          >
-            <h3 className="text-2xl font-semibold mb-6"> Send a Message</h3>
+          {/* Contact Form */}
+          <div className="bg-card p-8 rounded-lg shadow-xs">
+            <h3 className="text-2xl font-semibold mb-6">Send a Message</h3>
 
-            <form className="space-y-6">
+            <form className="space-y-6" onSubmit={handleSubmit}>
               <div>
                 <label
                   htmlFor="name"
                   className="block text-sm font-medium mb-2"
                 >
-                  {" "}
                   Your Name
                 </label>
                 <input
@@ -110,8 +163,11 @@ export const ContactSection = () => {
                   id="name"
                   name="name"
                   required
-                  className="w-full px-4 py-3 rounded-md border border-input bg-background focus:outline-hidden foucs:ring-2 focus:ring-primary"
-                  placeholder="Priyansh Raj Gupta"
+                  minLength={2}
+                  maxLength={100}
+                  className="w-full px-4 py-3 rounded-md border border-input bg-background focus:outline-none focus:ring-2 focus:ring-primary"
+                  placeholder="John Doe"
+                  disabled={isSubmitting}
                 />
               </div>
 
@@ -120,7 +176,6 @@ export const ContactSection = () => {
                   htmlFor="email"
                   className="block text-sm font-medium mb-2"
                 >
-                  {" "}
                   Your Email
                 </label>
                 <input
@@ -128,8 +183,9 @@ export const ContactSection = () => {
                   id="email"
                   name="email"
                   required
-                  className="w-full px-4 py-3 rounded-md border border-input bg-background focus:outline-hidden foucs:ring-2 focus:ring-primary"
-                  placeholder="26priyanshraj@gmail.com"
+                  className="w-full px-4 py-3 rounded-md border border-input bg-background focus:outline-none focus:ring-2 focus:ring-primary"
+                  placeholder="john@example.com"
+                  disabled={isSubmitting}
                 />
               </div>
 
@@ -138,15 +194,18 @@ export const ContactSection = () => {
                   htmlFor="message"
                   className="block text-sm font-medium mb-2"
                 >
-                  {" "}
                   Your Message
                 </label>
                 <textarea
                   id="message"
                   name="message"
                   required
-                  className="w-full px-4 py-3 rounded-md border border-input bg-background focus:outline-hidden foucs:ring-2 focus:ring-primary resize-none"
+                  minLength={10}
+                  maxLength={1000}
+                  rows={5}
+                  className="w-full px-4 py-3 rounded-md border border-input bg-background focus:outline-none focus:ring-2 focus:ring-primary resize-none"
                   placeholder="Hello, I'd like to talk about..."
+                  disabled={isSubmitting}
                 />
               </div>
 
@@ -154,11 +213,12 @@ export const ContactSection = () => {
                 type="submit"
                 disabled={isSubmitting}
                 className={cn(
-                  "cosmic-button w-full flex items-center justify-center gap-2"
+                  "cosmic-button w-full flex items-center justify-center gap-2",
+                  isSubmitting && "opacity-70 cursor-not-allowed"
                 )}
               >
                 {isSubmitting ? "Sending..." : "Send Message"}
-                <Send size={16} />
+                <Send size={16} className={isSubmitting ? "animate-pulse" : ""} />
               </button>
             </form>
           </div>
