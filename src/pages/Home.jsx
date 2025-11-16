@@ -5,6 +5,7 @@ import {SkillsSection} from "@/components/SkillsSection";
 import {ProjectsSection} from "@/components/ProjectsSection"
 import { ContactSection } from "../components/ContactSection";
 import {Footer} from "@/components/Footer"
+import {Design } from "@/components/Design"
 
 import { WaveCanvas } from "@/components/WaveEmbed";
 import Heatmap from "../components/Heatmap";
@@ -28,6 +29,7 @@ export const Home = () => {
                 <Heatmap />
                 <SkillsSection />
                 <ProjectsSection />
+                <Design/>
                 <ContactSection />
             </main>
             <Footer />
