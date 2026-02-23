@@ -8,8 +8,8 @@ const navItems = [
   { name: "Leetcode", href: "#leetcode" },
   { name: "Skills", href: "#skills" },
   { name: "Projects", href: "#projects" },
-  { name: "Contact", href: "#contact" },
   { name: "Design", href: "#design" },
+  { name: "Contact", href: "#contact" },
 ];
 
 
