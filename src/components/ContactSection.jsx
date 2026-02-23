@@ -166,7 +166,7 @@ export const ContactSection = () => {
                   minLength={2}
                   maxLength={100}
                   className="w-full px-4 py-3 rounded-md border border-input bg-background focus:outline-none focus:ring-2 focus:ring-primary"
-                  placeholder="John Doe"
+                  placeholder="Priyansh Raj Gupta"
                   disabled={isSubmitting}
                 />
               </div>
@@ -184,7 +184,7 @@ export const ContactSection = () => {
                   name="email"
                   required
                   className="w-full px-4 py-3 rounded-md border border-input bg-background focus:outline-none focus:ring-2 focus:ring-primary"
-                  placeholder="john@example.com"
+                  placeholder="priyansh@example.com"
                   disabled={isSubmitting}
                 />
               </div>

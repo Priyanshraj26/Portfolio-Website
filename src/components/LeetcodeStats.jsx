@@ -3,9 +3,9 @@ import { Smile, Meh, Hash, BicepsFlexed , ThumbsUp} from "lucide-react";
 
 export const LeetCodeStats = () => {
   const [stats, setStats] = useState({
-    totalSolved: 0,
-    easySolved: 0,
-    mediumSolved: 0,
+    totalSolved: 110,
+    easySolved: 68,
+    mediumSolved: 42,
     hardSolved: 0,
   });
 
@@ -24,13 +24,7 @@ export const LeetCodeStats = () => {
         }
       })
       .catch(() => {
-        // Fallback to zero if API fails
-        setStats({
-          totalSolved: 0,
-          easySolved: 0,
-          mediumSolved: 0,
-          hardSolved: 0,
-        });
+        // Keep fallback data on failure
       });
   }, []);
 

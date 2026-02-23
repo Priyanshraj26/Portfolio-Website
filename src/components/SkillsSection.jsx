@@ -3,16 +3,13 @@ import { cn } from "@/lib/utils";
 
 const skills = [
   // Frontend
-  { name: "HTML/CSS", level: 95, category: "frontend" },
   { name: "JavaScript", level: 80, category: "frontend" },
-  { name: "React", level: 60, category: "frontend" },
+  { name: "React", level: 80, category: "frontend" },
   { name: "Streamlit", level: 90, category: "frontend" },
   { name: "Matplotlib /Seaborn", level: 90, category: "frontend" },
 
-
   // Backend
   { name: "Node.js", level: 80, category: "backend" },
-  { name: "Express", level: 75, category: "backend" },
   { name: "MongoDB", level: 70, category: "backend" },
   { name: "FlaskAPI", level: 80, category: "backend" },
   { name: "Numpy/ Pandas", level: 90, category: "backend" },
@@ -22,11 +19,11 @@ const skills = [
   // Tools
   { name: "Git/GitHub", level: 85, category: "tools" },
   { name: "Hugging Face", level: 95, category: "tools" },
-  { name: "Docker", level: 60, category: "tools" },
   { name: "Figma", level: 75, category: "tools" },
   { name: "VS Code", level: 95, category: "tools" },
-  { name: "Adobe Premiere Pro", level: 85, category: "tools" },
-  { name: "Adobe Photoshop", level: 70, category: "tools" }
+  { name: "Adobe Photoshop", level: 80, category: "tools" },
+  { name: "Adobe Premiere Pro", level: 90, category: "tools" },
+  { name: "Adobe After Effects", level: 90, category: "tools" },
 ];
 
 const categories = ["frontend", "backend", "tools"];
