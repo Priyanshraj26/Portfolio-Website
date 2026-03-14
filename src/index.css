@@ -170,6 +170,68 @@
   }
 }
 
+/* Lightsaber nav link hover effect */
+.lightsaber-link {
+  position: relative;
+  transition: color 200ms;
+}
+.lightsaber-link::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0%;
+  height: 2px;
+  background: linear-gradient(90deg, #8b5cf6, #60a5fa, #8b5cf6);
+  transition: width 250ms ease-out;
+  box-shadow: 0 0 6px #8b5cf6;
+}
+.lightsaber-link:hover::after {
+  width: 100%;
+}
+.lightsaber-link:hover {
+  text-shadow: 0 0 8px rgba(139, 92, 246, 0.5);
+}
+
+/* Blaster spark on button click */
+@keyframes blaster-spark {
+  0%   { opacity: 1; transform: translateY(0px); }
+  100% { opacity: 0; transform: translateY(-40px); }
+}
+
+/* TIE Fighter flyby */
+@keyframes tie-flyby {
+  0%   { left: -80px; opacity: 1; }
+  90%  { opacity: 1; }
+  100% { left: calc(100vw + 80px); opacity: 0; }
+}
+
+/* Star Wars Orbitron font for headings */
+.font-starwars { font-family: 'Orbitron', sans-serif; }
+h2 { font-family: 'Orbitron', sans-serif; letter-spacing: 0.1em; }
+
+/* Custom crosshair cursor site-wide */
+* { cursor: crosshair; }
+button, a, [role="button"], input, textarea, select { cursor: pointer; }
+
+/* Star Wars themed scrollbar */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: hsl(222, 47%, 4%); }
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #8b5cf6, #3b82f6);
+  border-radius: 3px;
+  box-shadow: 0 0 6px #8b5cf6;
+}
+
+/* Section divider */
+.section-divider {
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #8b5cf6 20%, #60a5fa 50%, #8b5cf6 80%, transparent);
+  margin: 0;
+  opacity: 0.4;
+}
+
 #root {
   max-width: 100%;
   margin: 0 auto;

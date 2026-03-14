@@ -2,7 +2,9 @@ import { Briefcase, Calendar } from "lucide-react";
 
 export const ExperienceSection = () => {
   return (
-    <section id="experience" className="py-24 px-4 relative">
+    <section id="experience" className="py-24 px-4 relative"
+      style={{ background: "rgba(8, 10, 19, 0.85)", backdropFilter: "blur(4px)" }}
+    >
       <div className="container mx-auto max-w-5xl">
         <h2 className="text-3xl md:text-4xl font-bold mb-12 text-center">
           Work <span className="text-primary">Experience</span>

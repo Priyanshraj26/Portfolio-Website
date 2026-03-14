@@ -1,8 +1,29 @@
 import { Book, Briefcase, Code, User } from "lucide-react";
+import { motion } from "framer-motion";
+
+const dragProps = {
+  drag: true,
+  dragConstraints: { left: -20, right: 20, top: -20, bottom: 20 },
+  dragElastic: 0.2,
+  whileDrag: {
+    scale: 1.05,
+    boxShadow: "0 0 30px rgba(139, 92, 246, 0.6)",
+    cursor: "grabbing",
+    zIndex: 10,
+  },
+  whileHover: {
+    scale: 1.02,
+    boxShadow: "0 0 15px rgba(139, 92, 246, 0.3)",
+  },
+  transition: { type: "spring", stiffness: 400, damping: 25 },
+  style: { cursor: "grab", touchAction: "none" },
+};
 
 export const AboutSection = () => {
   return (
-    <section id="about" className="py-24 px-4 relative">
+    <section id="about" className="py-24 px-4 relative"
+      style={{ background: "rgba(8, 10, 19, 0.85)", backdropFilter: "blur(4px)" }}
+    >
       {" "}
       <div className="container mx-auto max-w-5xl">
         <h2 className="text-3xl md:text-4xl font-bold mb-12 text-center">
@@ -44,7 +65,7 @@ export const AboutSection = () => {
           </div>
 
           <div className="grid grid-cols-1 gap-6">
-            <div className="gradient-border p-6 card-hover">
+            <motion.div {...dragProps} className="gradient-border p-6">
               <div className="flex items-start gap-4">
                 <div className="p-3 rounded-full bg-primary/10">
                   <Code className="h-6 w-6 text-primary" />
@@ -56,9 +77,9 @@ export const AboutSection = () => {
                   </p>
                 </div>
               </div>
-            </div>
+            </motion.div>
 
-            <div className="gradient-border p-6 card-hover">
+            <motion.div {...dragProps} className="gradient-border p-6">
               <div className="flex items-start gap-4">
                 <div className="p-3 rounded-full bg-primary/10">
                   <User className="h-6 w-6 text-primary" />
@@ -70,9 +91,9 @@ export const AboutSection = () => {
                   </p>
                 </div>
               </div>
-            </div>
-            
-            <div className="gradient-border p-6 card-hover">
+            </motion.div>
+
+            <motion.div {...dragProps} className="gradient-border p-6">
               <div className="flex items-start gap-4">
                 <div className="p-3 rounded-full bg-primary/10">
                   <Book className="h-6 w-6 text-primary" />
@@ -85,7 +106,7 @@ export const AboutSection = () => {
                   </p>
                 </div>
               </div>
-            </div>
+            </motion.div>
           </div>
         </div>
       </div>

@@ -46,12 +46,14 @@ export const NavBar = () => {
 
         {/* desktop nav */}
         <div className="hidden md:flex flex items-center gap-6 py-5 px-10 bg-white/30 dark:bg-neutral-800/30 dark:text-white backdrop-blur-lg
-         rounded-xl">
+         rounded-xl"
+         style={{ fontFamily: "'Orbitron', sans-serif", fontSize: "0.85rem" }}
+        >
           {navItems.map((item, key) => (
             <a
               key={key}
               href={item.href}
-              className="text-foreground/80 hover:text-primary transition-colors duration-300"
+              className="lightsaber-link text-foreground/80 hover:text-primary transition-colors duration-300"
             >
               {item.name}
             </a>
@@ -82,7 +84,7 @@ export const NavBar = () => {
               <a
                 key={key}
                 href={item.href}
-                className="text-foreground/80 hover:text-primary transition-colors duration-300"
+                className="lightsaber-link text-foreground/80 hover:text-primary transition-colors duration-300"
                 onClick={() => setIsMenuOpen(false)}
               >
                 {item.name}
